@@ -1,0 +1,38 @@
+.tweet-container{
+  border: 5px solid black;
+  /* color: blue; */
+  display: flex;
+  flex-direction: column;
+}
+
+.tweet-header {
+  display: flex;
+  color: green;
+justify-content: space-between;
+align-items: center;
+  /* flex-direction: column; */
+  /* border: 2px solid red; */
+}
+
+.identity{
+  display: flex;
+  width: 200px;
+  justify-content: space-around;
+  border: 1px dashed blue;
+}
+
+footer{
+  border-top: 5px solid #5A5A5A;  
+  display: flex;
+  justify-content: space-between;
+  /* margin: auto; */
+}
+
+.counterErr {
+  color: red;
+
+} 
+
+/* .tweet-container footer div {
+  color: red;
+} */

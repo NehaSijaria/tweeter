@@ -1,0 +1,33 @@
+.main-header {
+  height: 400px;
+  width: 100%;
+  border: 1px solid green;
+  background-color: #c79f00;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 10px; */
+  /* position: relative; */
+}
+
+/* .nav{
+  z-index: 2;
+} */
+
+  /* .header {
+    z-index: 1;
+  } */
+
+  /* .header>div {
+    border: 2px solid green ;
+  } */
+
+
+
+  h2 {
+    border: 1px solid red;
+    /* padding-top: 0; */
+    margin-top: 0;
+  }
