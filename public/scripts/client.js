@@ -14,7 +14,7 @@ $(document).ready(function () {
     for (let tweet of tweets) {  
       const tweetElements =  createTweetElement(tweet)
       //  $("#tweets-container").append(tweetElements);
-      $("#tweets-container").prepend(tweetElements);
+      $("#tweets-container").append(tweetElements);
     }
   };
   function createTweetElement(obj) {
@@ -29,7 +29,7 @@ $(document).ready(function () {
         </header>
         <p>${obj.content.text}</p>
         <footer>
-          // <span>${timeago.format(obj.created_at)}</span>
+          <span>${timeago.format(obj.created_at)}</span>
           <div>
             <i class="fas fa-heart"></i>
             <i class="fas fa-flag"></i>
@@ -69,7 +69,7 @@ $(document).ready(function () {
         dataType: "json"
       })
         .then(function(tweets) {
-          console.log("tweets -------",tweets);
+          // console.log("tweets -------",tweets);
           renderTweets(tweets);
         }).catch(function(err) {
           console.log(err)
