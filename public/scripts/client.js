@@ -7,14 +7,15 @@
 // Test / driver code (temporary). Eventually will get this from the server.
 
 $(document).ready(function () { 
+  
   const renderTweets = function (tweets) {
     // loops through tweets
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container 
     for (let tweet of tweets) {  
       const tweetElements =  createTweetElement(tweet)
-      //  $("#tweets-container").append(tweetElements);
-      $("#tweets-container").append(tweetElements);
+      // $("#tweets-container").append(tweetElements);
+      $("#tweets-container").prepend(tweetElements);
     }
   };
   function createTweetElement(obj) {
@@ -40,23 +41,43 @@ $(document).ready(function () {
     `;
     return $tweet;
   }
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+  $('#error').html($(`<i class="fas fa-exclamation-triangle"></i>Tell me something, the tweet is empty. <i class="fas fa-exclamation-triangle"></i>`));
+  $('#error').slideDown();
+
     $('form').submit(function(event) {
-      event.preventDefault();
-      if (!$(this).find('#tweet-text').val()) {
-        alert("Tell me something, the tweet is empty.");
-        return;
-      } else if ($(this).find('.counter').val() < 0) {
-        alert("Character number exceeds the maximum limit!");
-        return;
-      }
+      event.preventDefault();       
+      const val = $('#tweet-text').val();
+      if (!val){
+        // alert("Your tweet is empty.Please say something.");
+        // return;
+        $('#error').html($(`<i class="fas fa-exclamation-triangle"></i>Your tweet is empty.Please say something.<i class="fas fa-exclamation-triangle"></i>`));
+        $('#error').slideDown();
+      } //else if ($(this).find('.counter').val() < 0) {
+        else if (val <= 0) {
+        // alert("Your tweet characters exceeded the maximum limit!");
+        // return;
+        $('#error').html($(`<i class="fas fa-exclamation-triangle"></i>TYour tweet characters exceeded the maximum limit! <i class="fas fa-exclamation-triangle"></i>`));
+        $('#error').slideDown();
+      } 
+      $('#error').html('');
+      $('#error').css("display", "none");
+
+      const escaped = escape($(this).serialize());
+      console.log('escaped--->', escaped)
     $.ajax({
       url: '/tweets', 
        method: 'POST',
-       data: $(this).serialize() // this ==> form; and serialized fn turn the form data into queryString.
+       data: escaped // this ==> form; and serialized fn turn the form data into queryString.
        //Jquery- need data to serialize
      })
      .then(function(response) {
       console.log("response from line 95----", response);
+      loadTweets()
     }).catch(function(err) {
       console.log(err)
     });   
@@ -69,12 +90,13 @@ $(document).ready(function () {
         dataType: "json"
       })
         .then(function(tweets) {
-          // console.log("tweets -------",tweets);
+          console.log("tweets -------",tweets);
           renderTweets(tweets);
         }).catch(function(err) {
           console.log(err)
         });       
     } 
-   loadTweets();
+    loadTweets();
 });
    
+
