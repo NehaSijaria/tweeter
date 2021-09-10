@@ -6,14 +6,14 @@
 
 // Test / driver code (temporary). Eventually will get this from the server.
 
-$(document).ready(function () { 
+$(document).ready(function() {
   
-  const renderTweets = function (tweets) {
+  const renderTweets = function(tweets) {
     // loops through tweets
     // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container 
-    for (let tweet of tweets) {  
-      const tweetElements =  createTweetElement(tweet)
+    // takes return value and appends it to the tweets container
+    for (let tweet of tweets) {
+      const tweetElements =  createTweetElement(tweet);
       // $("#tweets-container").append(tweetElements);
       $("#tweets-container").prepend(tweetElements);
     }
@@ -41,62 +41,64 @@ $(document).ready(function () {
     `;
     return $tweet;
   }
-  const escape = function (str) {
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
-  $('#error').html($(`<i class="fas fa-exclamation-triangle"></i>Tell me something, the tweet is empty. <i class="fas fa-exclamation-triangle"></i>`));
-  $('#error').slideDown();
+  
 
-    $('form').submit(function(event) {
-      event.preventDefault();       
-      const val = $('#tweet-text').val();
-      if (!val){
-        // alert("Your tweet is empty.Please say something.");
-        // return;
-        $('#error').html($(`<i class="fas fa-exclamation-triangle"></i>Your tweet is empty.Please say something.<i class="fas fa-exclamation-triangle"></i>`));
-        $('#error').slideDown();
-      } //else if ($(this).find('.counter').val() < 0) {
-        else if (val <= 0) {
-        // alert("Your tweet characters exceeded the maximum limit!");
-        // return;
-        $('#error').html($(`<i class="fas fa-exclamation-triangle"></i>TYour tweet characters exceeded the maximum limit! <i class="fas fa-exclamation-triangle"></i>`));
-        $('#error').slideDown();
-      } 
-      $('#error').html('');
-      $('#error').css("display", "none");
+  $('form').submit(function(event) {
+    event.preventDefault();
+    $('#error-msg').html("");
+    $('#error').slideUp();
+    const val = $('#tweet-text').val();
+    if (!val) {
+      // alert("Your tweet is empty.Please say something.");
+      // return;
+      $('#error-msg').html($(`<i class="fas fa-exclamation-triangle"></i>Your tweet is empty.Please say something.<i class="fas fa-exclamation-triangle"></i>`));
+      $('#error').slideDown();
+    } //else if ($(this).find('.counter').val() < 0) {
+    else if (val.length > 10) {
+      // alert("Your tweet characters exceeded the maximum limit!");
+      // return;
+      $('#error-msg').html($(`<i class="fas fa-exclamation-triangle"></i>TYour tweet characters exceeded the maximum limit! <i class="fas fa-exclamation-triangle"></i>`));
+      $('#error').slideDown();
+    } else {
+
 
       const escaped = escape($(this).serialize());
-      console.log('escaped--->', escaped)
-    $.ajax({
-      url: '/tweets', 
-       method: 'POST',
-       data: escaped // this ==> form; and serialized fn turn the form data into queryString.
-       //Jquery- need data to serialize
-     })
-     .then(function(response) {
-      console.log("response from line 95----", response);
-      loadTweets()
-    }).catch(function(err) {
-      console.log(err)
-    });   
-  })
-    //fetch tweets from server
-    const loadTweets = function() {
+      console.log('escaped--->', escaped);
       $.ajax({
-        url: "/tweets",
-        method: "GET",
-        dataType: "json"
+        url: '/tweets',
+        method: 'POST',
+        data: escaped // this ==> form; and serialized fn turn the form data into queryString.
+        //Jquery- need data to serialize
       })
-        .then(function(tweets) {
-          console.log("tweets -------",tweets);
-          renderTweets(tweets);
+        .then(function(response) {
+          console.log("response from line 95----", response);
+          loadTweets();
         }).catch(function(err) {
-          console.log(err)
-        });       
-    } 
+          console.log(err);
+        });
+  
+      //fetch tweets from server
+      const loadTweets = function() {
+        $.ajax({
+          url: "/tweets",
+          method: "GET",
+          dataType: "json"
+        })
+          .then(function(tweets) {
+            console.log("tweets -------",tweets);
+            renderTweets(tweets);
+          }).catch(function(err) {
+            console.log(err);
+          });
+      };
+    }
     loadTweets();
-});
+  });
    
 
+});

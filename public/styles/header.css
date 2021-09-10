@@ -17,3 +17,23 @@
     /* padding-top: 0; */
     margin-top: 0;
   }
+
+  @media only screen and (min-width:1024px){
+  
+     .second-child {
+      display: flex;
+      flex-direction: row;
+    }
+    .main-header{
+      width: 60vw;
+      border: 5px solid red;
+      margin: 40px;
+
+    } 
+   .nav{
+    background-color: #4056A1;
+   }
+  
+  }
+
+  

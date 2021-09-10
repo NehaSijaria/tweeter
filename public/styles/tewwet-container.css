@@ -3,6 +3,13 @@
   /* color: blue; */
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
+
+}
+
+.tweet-container:hover{
+  box-shadow: 3px 3px red, -1em 0 .4em olive;
+
 }
 
 .tweet-header {

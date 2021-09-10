@@ -1,19 +1,21 @@
-nav {
+ .nav {
   height: 120px;
   border: 1px solid red;
-  background-color: #4056A1;
+  background-color: #c79f00;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
   color: #FFF;
   padding: 1.5em;
   /* < Sticky Nav bar >*/   
   position: -webkit-sticky;   
   position: sticky;   
   top: 0;   
-  padding: 5px;  
+  padding: 5px;   
   /* </ Sticky Nav bar > */
-  display: flex;
+   display: flex;
   justify-content: space-between;
-}
-nav>span {
+} 
+
+.nav>span {
   font-family: 'Bungee', cursive;
   border: 1px solid red;
 }
@@ -22,4 +24,9 @@ nav>span {
   flex-direction: column;
   justify-content: center;
   align-content: center;
+}
+
+i.fas.fa-angle-double-down{
+  font-size: 24px;
+  color: blue;
 }

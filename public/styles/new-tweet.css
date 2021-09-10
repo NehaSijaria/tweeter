@@ -1,18 +1,10 @@
 
-
-button {
-  background-color: blanchedalmond;
+.btn-submit {
   padding: 4px;
   font-family: 'Bungee', cursive;
   background-color: #4056A1;
   color: white;
-  
 } 
-  /* #tweet-text {
-    background-color: #ffffff;
-    border: 1px solid black;
-    opacity: 0.1;
-  }*/
 
 #tweet-text {
   border: 0 none ;
@@ -21,9 +13,7 @@ button {
   color: blue;
   /* opacity: 0.1; */
 }
-textarea {
-  /* background-color: #f4f1ec; */
-}
+
 form {
   display: flex;
   flex-direction: column;
