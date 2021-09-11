@@ -11,6 +11,11 @@ This repository is the starter code for the project: Students will fork and clon
 3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
 4. Go to <http://localhost:8080/> in your browser.
 
+## Screenshots
+!["Screenshot of tweet compose box"](https://github.com/NehaSijaria/tweeter/blob/master/docs/compose-box.png)
+
+!["Screenshot of tweet copage for small devices"](https://github.com/NehaSijaria/tweeter/blob/master/docs/tweet-small-device.png)
+
 ## Dependencies
 
 - Express
