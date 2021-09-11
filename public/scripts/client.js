@@ -72,8 +72,7 @@ $(document).ready(function() {
       $.ajax({
         url: '/tweets',
         method: 'POST',
-        data: escaped // this ==> form; and serialized fn turn the form data into queryString.
-        //Jquery- need data to serialize
+        data: escaped // this ==> form; and serialized fn turn the form data into queryString. //Jquery- need data to serialize
       })
         .then(function(response) {
           console.log("response from line 95----", response);
