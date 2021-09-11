@@ -7,7 +7,7 @@
 // Test / driver code (temporary). Eventually will get this from the server.
 
 $(document).ready(function() {
-  
+  // loadTweets();
   const renderTweets = function(tweets) {
     // loops through tweets
     // calls createTweetElement for each tweet
@@ -47,6 +47,19 @@ $(document).ready(function() {
     return div.innerHTML;
   };
   
+  const loadTweets = function() {
+    $.ajax({
+      url: "/tweets",
+      method: "GET",
+      dataType: "json"
+    })
+      .then(function(tweets) {
+        console.log("tweets -------",tweets);
+        renderTweets(tweets);
+      }).catch(function(err) {
+        console.log(err);
+      });
+  };
 
   $('form').submit(function(event) {
     event.preventDefault();
@@ -65,8 +78,6 @@ $(document).ready(function() {
       $('#error-msg').html($(`<i class="fas fa-exclamation-triangle"></i>TYour tweet characters exceeded the maximum limit! <i class="fas fa-exclamation-triangle"></i>`));
       $('#error').slideDown();
     } else {
-
-
       const escaped = escape($(this).serialize());
       console.log('escaped--->', escaped);
       $.ajax({
@@ -82,22 +93,10 @@ $(document).ready(function() {
         });
   
       //fetch tweets from server
-      const loadTweets = function() {
-        $.ajax({
-          url: "/tweets",
-          method: "GET",
-          dataType: "json"
-        })
-          .then(function(tweets) {
-            console.log("tweets -------",tweets);
-            renderTweets(tweets);
-          }).catch(function(err) {
-            console.log(err);
-          });
-      };
+      
     }
-    loadTweets();
+    
   });
-   
+  loadTweets();
 
 });

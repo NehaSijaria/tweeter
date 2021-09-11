@@ -1,6 +1,5 @@
  .nav {
   height: 120px;
-  border: 1px solid red;
   background-color: #c79f00;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
   color: #FFF;
@@ -13,17 +12,21 @@
   /* </ Sticky Nav bar ENDS> */
    display: flex;
   justify-content: space-between;
+  align-items: center;
 } 
 
-.nav>span {
-  font-family: 'Bungee', cursive;
-  border: 1px solid red;
-}
 .text-right{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
+  font-weight: 800;
+  margin-right: 40px;
+}
+
+.text-left{
+  margin-left: 20px;
+  font-family: 'Bungee', cursive;
 }
 
 i.fas.fa-angle-double-down{

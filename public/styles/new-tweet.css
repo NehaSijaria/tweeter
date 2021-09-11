@@ -4,6 +4,7 @@
   font-family: 'Bungee', cursive;
   background-color: #4056A1;
   color: white;
+  margin: 20px 0;
 } 
 
 #tweet-text {
@@ -11,6 +12,7 @@
   border-bottom: 2px solid black;
   outline: none;
   color: blue;
+  background-color: transparent;
 }
 
 form {

@@ -6,7 +6,8 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+body {
   box-sizing: inherit;
   font-family: 'Source Sans Pro', sans-serif;
 }
