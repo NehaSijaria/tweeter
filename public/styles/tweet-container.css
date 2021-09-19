@@ -5,8 +5,12 @@
   margin-bottom: 40px;
 }
 
+.tweet-container footer i:hover {
+  color: red;
+}
+
 .tweet-container:hover{
-  box-shadow: 3px 3px red, -1em 0 .4em olive;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .tweet-header {

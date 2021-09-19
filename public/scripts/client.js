@@ -72,12 +72,13 @@ $(document).ready(function() {
       $('#error-msg').html($(`<i class="fas fa-exclamation-triangle"></i>Your tweet is empty.Please say something.<i class="fas fa-exclamation-triangle"></i>`));
       $('#error').slideDown();
     } //else if ($(this).find('.counter').val() < 0) {
-    else if (val.length > 10) {
+    else if (val.length > 140) {
       // alert("Your tweet characters exceeded the maximum limit!");
       // return;
       $('#error-msg').html($(`<i class="fas fa-exclamation-triangle"></i>TYour tweet characters exceeded the maximum limit! <i class="fas fa-exclamation-triangle"></i>`));
       $('#error').slideDown();
     } else {
+      //
       const escaped = escape($(this).serialize());
       console.log('escaped--->', escaped);
       $.ajax({
@@ -88,12 +89,14 @@ $(document).ready(function() {
         .then(function(response) {
           console.log("response from line 95----", response);
           loadTweets();
+         
         }).catch(function(err) {
           console.log(err);
         });
   
       //fetch tweets from server
-      
+      $('#tweet-text').val(''); 
+      $('#counter').val('140');
     }
     
   });
