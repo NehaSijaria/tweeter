@@ -12,6 +12,7 @@ $(document).ready(function() {
     // loops through tweets
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container
+    $('#tweets-container').html('');
     for (let tweet of tweets) {
       const tweetElements =  createTweetElement(tweet);
       // $("#tweets-container").append(tweetElements);
@@ -23,10 +24,10 @@ $(document).ready(function() {
       <article class="tweet-container">
         <header class="tweet-header">  
           <div class="identity">    
-            <img src="${obj.user.avatars}">
-            <h5>${obj.user.name}</h5>
+            <img src="${escape(obj.user.avatars)}">
+            <h5>${escape(obj.user.name)}</h5>
           </div>   
-          <h5 class="tweet-id">${obj.user.handle}</h5>
+          <h5 class="tweet-id">${escape(obj.user.handle)}</h5>
         </header>
         <p>${obj.content.text}</p>
         <footer>
